@@ -1,7 +1,7 @@
 @echo off
 REM Archivage de Sauvegarde / version 2.3
 
-REM année mois jour depuis fonction date
+REM annÃ©e mois jour depuis fonction date
 set annee=%date:~6,4%
 set mois=%date:~3,2%
 set jour=%date:~0,2%
@@ -10,25 +10,25 @@ REM *********************
 REM **** PARAMETRAGE ****
 REM *********************
 
-REM Repertoire où se trouve le script et 7zip
-set reptrav=C:\sauve_bdd\
+REM Repertoire oÃ¹ se trouve le script et 7zip
+set reptrav=C:\script_bdd\
 
-REM Repertoire où se trouve le fichier de sauvegarde
-set repsauve=C:\sauve_bdd\
+REM Repertoire oÃ¹ se trouve le fichier de sauvegarde
+set repsauve=C:\sauvegarde_bdd\
 
 REM Dossier d'archivage
-set reparch=C:\sauve_bdd\Archives
+set reparch=C:\Archives_bdd
 
 REM Nom du fichier de sauvegarde
-set fic=Winstar
+set fic=mabase
 
 REM Extension du fichier de sauvegarde
 set ext=bak
 
 REM Nom du fichier .zip
-set ficzip=Winstar
+set ficzip=mabase
 
-REM Nombres de mois avant nettoyage (entre 1 et 30)
+REM Nombres de jours avant nettoyage (entre 1 et 30)
 set nbrjours=15
 
 REM ****************************
@@ -50,26 +50,26 @@ set /a jour=100%jour%%%100
 REM Application du nombre de jours avant nettoyage
 set /a jour=%jour%-%nbrjours%
 
-REM Gestion du mois précédent
+REM Gestion du mois prÃ©cÃ©dent
 if %jour% LSS 1 (set /a jour=%jour%+30& set /a mois=%mois%-1)
 
-REM Gestion de l'année précédente
+REM Gestion de l'annÃ©e prÃ©cÃ©dente
 if %mois% LSS 1 (set /a mois=%mois%+12& set /a annee=%annee%-1)
 
-REM Gestion du mois antéprécédent
+REM Gestion du mois antÃ©prÃ©cÃ©dent
 set /a mois2=%mois%-1
 
-REM Gestion de l'anneé précédente du mois antéprécédent
+REM Gestion de l'anneÃ© prÃ©cÃ©dente du mois antÃ©prÃ©cÃ©dent
 set annee2=%annee%
 set chgannee=non
 
-REM Gestion de l'année précédente du mois antéprécédent
+REM Gestion de l'annÃ©e prÃ©cÃ©dente du mois antÃ©prÃ©cÃ©dent
 if %mois2% LSS 1 (set /a mois2=%mois2%+12& set /a annee2=%annee%-1& set chgannee=oui)
 
 REM Ajout du 0 devant le mois
 if %mois% LSS 10 set mois=0%mois%
 
-REM Ajout du 0 devant le mois antéprécédent
+REM Ajout du 0 devant le mois antÃ©prÃ©cÃ©dent
 if %mois2% LSS 10 set mois2=0%mois2%
 
 REM Ajout du 0 devant le jour
